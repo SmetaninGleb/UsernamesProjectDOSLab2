@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: smetanin_gleb
+      preConditions:
+        - onFail: MARK_RAN
+      changes:
+        - createTable:
+            tableName: usernames
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: users_pk
+                    nullable: false
+              - column:
+                  name: username
+                  type: clob
+                  constraints:
+                    nullable: false
+        - addAutoIncrement:
+            columnDataType: int
+            columnName: id
+            tableName: usernames
